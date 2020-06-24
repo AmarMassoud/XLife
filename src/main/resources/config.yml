@@ -1,2 +1,5 @@
+amountOfDeaths: 10
+startAt: 1
+
 commands-after-tenth-death:
   - "useless"

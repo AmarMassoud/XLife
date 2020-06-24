@@ -1,15 +1,19 @@
 package me.amar.xlife.xlife;
 
-import com.google.gson.internal.$Gson$Preconditions;
-import com.sun.org.glassfish.external.statistics.annotations.Reset;
-import me.amar.xlife.xlife.Events.OnDamageEvent;
-import me.amar.xlife.xlife.Events.OnFirstJoinEvent;
-import me.amar.xlife.xlife.commands.ReloadCommand;
-import me.amar.xlife.xlife.commands.ResetHeartsCommand;
-import me.amar.xlife.xlife.commands.SetHeartCommands;
+import me.amar.xlife.xlife.Events.*;
+import me.amar.xlife.xlife.commands.Files.DataYml;
+import me.amar.xlife.xlife.commands.LifeXTabCompleter;
+import me.amar.xlife.xlife.commands.XLifeCommandManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import javax.sql.DataSource;
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 public final class XLife extends JavaPlugin {
 
@@ -17,11 +21,18 @@ public final class XLife extends JavaPlugin {
     public void onEnable() {
         getConfig().options().copyDefaults(true);
         saveConfig();
-        getCommand("reset").setExecutor(new ResetHeartsCommand());
-        getCommand("set").setExecutor(new SetHeartCommands());
-        getCommand("rlconfig").setExecutor(new ReloadCommand());
+        getCommand("xlife").setExecutor(new XLifeCommandManager());
+        getCommand("xlife").setTabCompleter(new LifeXTabCompleter());
         Bukkit.getPluginManager().registerEvents(new OnDamageEvent(), this);
         Bukkit.getPluginManager().registerEvents(new OnFirstJoinEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new QuitEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new OnPlayerJoinEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityRegenEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerGameModeChangeEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new OnPlayerRespawnEvent(), this);
+        loadConfigManager();
+        DataYml.getDataYml().set("health.random.health", "56498745468465ABCZ");
+        DataYml.saveDataYml();
         getLogger().info("XLife " + getDescription().getVersion() + " has been enabled");
 
     }
@@ -30,9 +41,16 @@ public final class XLife extends JavaPlugin {
     public void onDisable() {
         getLogger().info("XLife " + getDescription().getVersion() + " has been disabled.");
     }
+
     public static String colorize(String s) {
         return ChatColor.translateAlternateColorCodes('&', s);
     }
 
+    public void loadConfigManager() {
+        DataYml.setUpDataYml();
+        DataYml.reloadDataYml();
+        DataYml.getDataYml().options().copyDefaults(true);
+        DataYml.saveDataYml();
+    }
 
 }

@@ -3,11 +3,8 @@ version: 1.0.0
 main: me.amar.xlife.xlife.XLife
 api-version: 1.13
 commands:
-  reset:
-    description: reset the hearts of a player.
-  set:
-    description: set the hearts of a player.
-  rlconfig:
-    description: reloads config of xlife
+  xlife:
+    description: The main XLife command.
+    aliases: [xl]
   useless:
     description: does nothing
