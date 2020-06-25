@@ -1,10 +1,10 @@
-name: XLife
+name: LifeX
 version: 1.0.0
-main: me.amar.xlife.xlife.XLife
+main: me.amar.lifex.LifeX
 api-version: 1.13
 commands:
-  xlife:
+  life:
     description: The main XLife command.
-    aliases: [xl]
+    aliases: [l]
   useless:
     description: does nothing

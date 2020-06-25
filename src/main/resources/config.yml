@@ -4,5 +4,6 @@ startAt: 1
 commands-after-tenth-death:
   - "useless"
 remove:
+  enabled: true
   material:
   amount:

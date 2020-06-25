@@ -1,14 +1,13 @@
-package me.amar.xlife.xlife.Events;
+package me.amar.lifex.Events;
 
-import me.amar.xlife.xlife.XLife;
+import me.amar.lifex.LifeX;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 
 public class OnFirstJoinEvent implements Listener {
-    private final XLife plugin = XLife.getPlugin(XLife.class);
+    private final LifeX plugin = LifeX.getPlugin(LifeX.class);
     @EventHandler
     public void onFirstJoin(PlayerLoginEvent e) {
         Player p = e.getPlayer();

@@ -1,6 +1,6 @@
-package me.amar.xlife.xlife.commands.Files;
+package me.amar.lifex.commands.Files;
 
-import me.amar.xlife.xlife.XLife;
+import me.amar.lifex.LifeX;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class DataYml {
 
-    private static XLife plugin = XLife.getPlugin(XLife.class);
+    private static LifeX plugin = LifeX.getPlugin(LifeX.class);
 
     public static FileConfiguration dataYml;
     public static File dataFile;
@@ -26,9 +26,9 @@ public class DataYml {
         if (!dataFile.exists()) {
             try {
                 dataFile.createNewFile();
-                Bukkit.getConsoleSender().sendMessage(XLife.colorize("&eLoaded data.yml &asuccessfully"));
+                Bukkit.getConsoleSender().sendMessage(LifeX.colorize("&eLoaded data.yml &asuccessfully"));
             } catch (IOException e) {
-                Bukkit.getConsoleSender().sendMessage(XLife.colorize("&cCould not load data.yml"));
+                Bukkit.getConsoleSender().sendMessage(LifeX.colorize("&cCould not load data.yml"));
                 e.printStackTrace();
             }
 
@@ -47,14 +47,14 @@ public class DataYml {
         try {
             dataYml.save(dataFile);
         } catch (IOException e) {
-            Bukkit.getConsoleSender().sendMessage(XLife.colorize("&cCould not save data.yml"));
+            Bukkit.getConsoleSender().sendMessage(LifeX.colorize("&cCould not save data.yml"));
             e.printStackTrace();
         }
     }
 
     public static void reloadDataYml() {
         dataYml = YamlConfiguration.loadConfiguration(dataFile);
-        Bukkit.getConsoleSender().sendMessage(XLife.colorize("&eReloaded data.yml &asuccessfully"));
+        Bukkit.getConsoleSender().sendMessage(LifeX.colorize("&eReloaded data.yml &asuccessfully"));
     }
     public static Double getString(String node) {
         return DataYml.getString(node);

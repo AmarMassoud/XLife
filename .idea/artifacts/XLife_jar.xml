@@ -2,7 +2,7 @@
   <artifact type="jar" name="XLife:jar">
     <output-path>$USER_HOME$/Desktop/Minecraft server 1.8/plugins</output-path>
     <root id="archive" name="XLife.jar">
-      <element id="module-output" name="XLife" />
+      <element id="module-output" name="LifeX" />
     </root>
   </artifact>
 </component>

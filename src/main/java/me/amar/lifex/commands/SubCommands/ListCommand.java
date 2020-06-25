@@ -1,24 +1,16 @@
-package me.amar.xlife.xlife.commands.SubCommands;
+package me.amar.lifex.commands.SubCommands;
 
-import me.amar.xlife.xlife.Events.QuitEvent;
-import me.amar.xlife.xlife.XLife;
-import me.amar.xlife.xlife.commands.Files.DataYml;
-import me.amar.xlife.xlife.commands.SubCommand;
+import me.amar.lifex.commands.SubCommand;
+import me.amar.lifex.LifeX;
+import me.amar.lifex.commands.Files.DataYml;
 import org.apache.commons.lang.StringUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 
-import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.*;
 
 public class ListCommand extends SubCommand {
-    private final XLife plugin = XLife.getPlugin(XLife.class);
+    private final LifeX plugin = LifeX.getPlugin(LifeX.class);
     @Override
     public String getName() {
         return "list";

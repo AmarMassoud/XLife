@@ -1,11 +1,9 @@
-package me.amar.xlife.xlife.commands.SubCommands;
+package me.amar.lifex.commands.SubCommands;
 
-import me.amar.xlife.xlife.XLife;
-import me.amar.xlife.xlife.commands.HelpMethod;
-import me.amar.xlife.xlife.commands.SubCommand;
+import me.amar.lifex.commands.HelpMethod;
+import me.amar.lifex.commands.SubCommand;
+import me.amar.lifex.LifeX;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -33,23 +31,23 @@ public class ResetHeartsCommand extends SubCommand {
             try {
                 target = Bukkit.getPlayer(args[1]);
             } catch (Exception e) {
-                sender.sendMessage(XLife.colorize("&cPlease provide a valid player"));
+                sender.sendMessage(LifeX.colorize("&cPlease provide a valid player"));
             }
             if(sender.hasPermission("xlife.reset")) {
                 try{
                     target.setMaxHealth(2);
                 } catch (Exception e) {
-                    sender.sendMessage(XLife.colorize("Please provide a valid player"));
+                    sender.sendMessage(LifeX.colorize("Please provide a valid player"));
                 }
 
             } else {
-                sender.sendMessage(XLife.colorize("&cYou do not have permission to do that."));
+                sender.sendMessage(LifeX.colorize("&cYou do not have permission to do that."));
             }
         } else if(args.length == 1) {
             if(sender instanceof Player) {
                 ((Player) sender).setMaxHealth(2);
             } else {
-                sender.sendMessage(XLife.colorize("&cThis command can only be used by players."));
+                sender.sendMessage(LifeX.colorize("&cThis command can only be used by players."));
             }
         } else {
             HelpMethod.getHelpMethod(sender);

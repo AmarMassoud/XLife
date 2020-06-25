@@ -1,7 +1,7 @@
-package me.amar.xlife.xlife.Events;
+package me.amar.lifex.Events;
 
-import me.amar.xlife.xlife.XLife;
-import me.amar.xlife.xlife.commands.Files.DataYml;
+import me.amar.lifex.LifeX;
+import me.amar.lifex.commands.Files.DataYml;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
 public class OnDamageEvent implements Listener {
-    private final XLife plugin = XLife.getPlugin(XLife.class);
+    private final LifeX plugin = LifeX.getPlugin(LifeX.class);
     @EventHandler
     public void OnDamageEvent(EntityDamageEvent e) {
         if(e.getEntity() instanceof Player) {

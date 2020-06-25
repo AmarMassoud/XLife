@@ -1,8 +1,6 @@
-package me.amar.xlife.xlife.commands;
+package me.amar.lifex.commands;
 
 import org.bukkit.command.CommandSender;
-
-import java.io.IOException;
 
 public abstract class SubCommand {
 

@@ -1,4 +1,4 @@
-package me.amar.xlife.xlife.commands.SubCommands;
+package me.amar.lifex.commands.SubCommands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

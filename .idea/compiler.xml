@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="XLife" />
+        <module name="LifeX" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="XLife" target="1.8" />
+      <module name="LifeX" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

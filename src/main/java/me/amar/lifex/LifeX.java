@@ -1,28 +1,21 @@
-package me.amar.xlife.xlife;
+package me.amar.lifex;
 
-import me.amar.xlife.xlife.Events.*;
-import me.amar.xlife.xlife.commands.Files.DataYml;
-import me.amar.xlife.xlife.commands.LifeXTabCompleter;
-import me.amar.xlife.xlife.commands.XLifeCommandManager;
+import me.amar.lifex.Events.*;
+import me.amar.lifex.commands.Files.DataYml;
+import me.amar.lifex.commands.LifeXTabCompleter;
+import me.amar.lifex.commands.XLifeCommandManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import javax.sql.DataSource;
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-
-public final class XLife extends JavaPlugin {
+public final class LifeX extends JavaPlugin {
 
     @Override
     public void onEnable() {
         getConfig().options().copyDefaults(true);
         saveConfig();
-        getCommand("xlife").setExecutor(new XLifeCommandManager());
-        getCommand("xlife").setTabCompleter(new LifeXTabCompleter());
+        getCommand("life").setExecutor(new XLifeCommandManager());
+        getCommand("life").setTabCompleter(new LifeXTabCompleter());
         Bukkit.getPluginManager().registerEvents(new OnDamageEvent(), this);
         Bukkit.getPluginManager().registerEvents(new OnFirstJoinEvent(), this);
         Bukkit.getPluginManager().registerEvents(new QuitEvent(), this);

@@ -1,4 +1,4 @@
-package me.amar.xlife.xlife.commands;
+package me.amar.lifex.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -7,7 +7,6 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LifeXTabCompleter implements TabCompleter {

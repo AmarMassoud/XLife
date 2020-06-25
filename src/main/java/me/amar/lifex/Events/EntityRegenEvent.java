@@ -1,6 +1,6 @@
-package me.amar.xlife.xlife.Events;
+package me.amar.lifex.Events;
 
-import me.amar.xlife.xlife.commands.Files.DataYml;
+import me.amar.lifex.commands.Files.DataYml;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

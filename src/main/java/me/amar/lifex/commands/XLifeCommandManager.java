@@ -1,9 +1,10 @@
-package me.amar.xlife.xlife.commands;
+package me.amar.lifex.commands;
 
-import me.amar.xlife.xlife.XLife;
-import me.amar.xlife.xlife.commands.SubCommands.ListCommand;
-import me.amar.xlife.xlife.commands.SubCommands.ResetHeartsCommand;
-import me.amar.xlife.xlife.commands.SubCommands.SetHeartCommands;
+import me.amar.lifex.commands.SubCommands.ListCommand;
+import me.amar.lifex.commands.SubCommands.RemoveHeartCommand;
+import me.amar.lifex.LifeX;
+import me.amar.lifex.commands.SubCommands.ResetHeartsCommand;
+import me.amar.lifex.commands.SubCommands.SetHeartCommands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 public class XLifeCommandManager implements CommandExecutor {
 
-    private final XLife plugin = XLife.getPlugin(XLife.class);
+    private final LifeX plugin = LifeX.getPlugin(LifeX.class);
     private ArrayList<SubCommand> SubCommands = new ArrayList<SubCommand>();
 
 
@@ -20,6 +21,7 @@ public class XLifeCommandManager implements CommandExecutor {
         SubCommands.add(new ResetHeartsCommand());
         SubCommands.add(new SetHeartCommands());
         SubCommands.add(new ListCommand());
+        SubCommands.add(new RemoveHeartCommand());
     }
 
 
@@ -31,11 +33,11 @@ public class XLifeCommandManager implements CommandExecutor {
             if (args[0].equalsIgnoreCase("reload")) {
                 if (sender.hasPermission("xlife.reload")) {
                     plugin.reloadConfig();
-                    sender.sendMessage(XLife.colorize("&cConfig has been reloaded successfully."));
+                    sender.sendMessage(LifeX.colorize("&cConfig has been reloaded successfully."));
                 } else {
-                    sender.sendMessage(XLife.colorize("&cYou do not have permission to use this command."));
+                    sender.sendMessage(LifeX.colorize("&cYou do not have permission to use this command."));
                 }
-            } else {
+            } else if(!args[0].equalsIgnoreCase("reload")){
 
 
                 for (int i = 0; i < getSubCommands().size(); i++) {
@@ -43,6 +45,8 @@ public class XLifeCommandManager implements CommandExecutor {
                         getSubCommands().get(i).perform(sender, args);
                 }
 
+            } else {
+                HelpMethod.getHelpMethod(sender);
             }
         } else {
             HelpMethod.getHelpMethod(sender);
