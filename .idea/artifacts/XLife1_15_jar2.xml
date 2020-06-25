@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="XLife1.15:jar2">
+    <output-path>$USER_HOME$/Desktop/minecraft server 1.15/plugins</output-path>
+    <root id="archive" name="XLife.jar">
+      <element id="module-output" name="XLife" />
+    </root>
+  </artifact>
+</component>
