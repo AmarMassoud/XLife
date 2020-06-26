@@ -4,7 +4,7 @@ main: me.amar.lifex.LifeX
 api-version: 1.13
 commands:
   life:
-    description: The main XLife command.
+    description: The main LifeX command.
     aliases: [l]
   useless:
     description: does nothing

@@ -1,10 +1,10 @@
-package me.amar.lifex.commands;
+package me.amar.lifex.API;
 
 import me.amar.lifex.LifeX;
 import org.bukkit.command.CommandSender;
 
-public class HelpMethod {
-
+public class Public {
+        private final LifeX plugin = LifeX.getPlugin(LifeX.class);
     public static void getHelpMethod(CommandSender p) {
         p.sendMessage(LifeX.colorize("&cWrong usage; please use a valid command:"));
         p.sendMessage(LifeX.colorize("&7&m---------&cCommands&7&m---------"));
@@ -13,13 +13,8 @@ public class HelpMethod {
         p.sendMessage(LifeX.colorize("&c/life &breset <player> &e- &9Resets the hearts of a specific player"));
         p.sendMessage(LifeX.colorize("&c/life &breset &e- &9Resets your hearts"));
         p.sendMessage(LifeX.colorize("&7&m--------------------------"));
-
-
-
-
-
-
     }
+    public String prefix = plugin.getConfig().getString("prefix") + " ";
 
 
 

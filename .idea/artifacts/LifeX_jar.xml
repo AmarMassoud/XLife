@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="XLife:jar">
+  <artifact type="jar" name="LifeX:jar">
     <output-path>$USER_HOME$/Desktop/Minecraft server 1.8/plugins</output-path>
-    <root id="archive" name="XLife.jar">
+    <root id="archive" name="LifeX.jar">
       <element id="module-output" name="LifeX" />
     </root>
   </artifact>

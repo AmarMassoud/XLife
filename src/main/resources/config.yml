@@ -1,9 +1,10 @@
-amountOfDeaths: 10
-startAt: 1
-
-commands-after-tenth-death:
+AmountOfDeaths: 10 # This is the amount of deaths the player will have before executing the `commands-after-last-death` option below.
+StartAt: 1 # This is the amount of hearts the players will start at when they join the server for the first time (If you want to reset their hearts, either use '/reset <player>' or remove their file from World >> playerdata.
+IncrementsBy: 1 # This is the amount of hearts the plugin will add to the player.
+Commands-After-Last-Death: # these are the commands that will be executed when they reach their last death. Their last death is determined by the 'AmountOfDeaths:' option above.
   - "useless"
-remove:
-  enabled: true
-  material:
-  amount:
+RemoveHeartCommand:
+  enabled: false # This will determine whether the '/life remove' will be enabled or not. THIS WILL NOT WORK IF THE PLAYER DOES NOT HAVE Lifex.remove
+  material: DIAMOND # This is the material that will be removed when the player executes '/life remove' (This will only work if 'enabled:' is true.
+  amount: 1 # This is the amount that will be removed when the player executed '/life remove'
+prefix: "&b[&9LifeX&b]"

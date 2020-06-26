@@ -1,5 +1,7 @@
 package me.amar.lifex.commands.SubCommands;
 
+import me.amar.lifex.API.Public;
+import me.amar.lifex.API.newItemStack;
 import me.amar.lifex.commands.SubCommand;
 import me.amar.lifex.LifeX;
 import org.bukkit.command.CommandSender;
@@ -7,7 +9,6 @@ import org.bukkit.entity.Player;
 
 public class RemoveHeartCommand extends SubCommand {
     private final LifeX plugin = LifeX.getPlugin(LifeX.class);
-
 
     @Override
     public String getName() {
@@ -21,31 +22,35 @@ public class RemoveHeartCommand extends SubCommand {
 
     @Override
     public String getSyntax() {
-        return "/xlife remove";
+        return "/life remove";
     }
 
     @Override
     public void perform(CommandSender sender, String[] args) {
-        String s = plugin.getConfig().getString("remove.material");
-        int amount = plugin.getConfig().getInt("remove.amount");
-        if (sender instanceof Player) {
+        String prefix = plugin.getConfig().getString("prefix") + " ";
+          if (sender instanceof Player) {
             Player p = (Player) sender;
-            if (p.hasPermission("xlife.remove")) {
-                if (plugin.getConfig().getBoolean("remove.enabled")) {
+                if (plugin.getConfig().getBoolean("removeHeartCommand.enabled")) {
+                    if (p.hasPermission("life.remove")) {
+                        if (p.getInventory().contains(newItemStack.getMaterial(plugin.getConfig().getString("removeHeartCommand.material")))) {
+                            p.setMaxHealth(p.getMaxHealth() + 2);
+                            p.setHealth(p.getMaxHealth());
+                            p.sendMessage(LifeX.colorize(prefix + "&cYou have been granted one heart for your great work!"));
+                            p.getInventory().remove(newItemStack.getMaterial(plugin.getConfig().getString("removeHeartCommand.material")));
+                        } else {
+                            p.sendMessage(LifeX.colorize(prefix + "&cYou do not have enough items to use this command."));
+                        }
 
-//
-//                    if (p.getInventory().contains(new ItemStack(XMaterial.valueOf(plugin.getConfig().getString("remove.material"))))) {
-//
-//                    }
 
+                    } else {
+                        p.sendMessage(LifeX.colorize(prefix + "&cYou do not have enough permission to use this command."));
+                    }
+                } else {
+                    p.sendMessage(LifeX.colorize(prefix + "&cThis feature has been disabled by the administrators."));
                 }
 
-
-            }
-
-
         } else {
-            sender.sendMessage(LifeX.colorize("&cThis command can only be used by players."));
+            sender.sendMessage(LifeX.colorize(prefix + "&cThis command can only be used by players."));
         }
     }
 }

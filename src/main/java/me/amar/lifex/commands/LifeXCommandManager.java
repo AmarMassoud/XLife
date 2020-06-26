@@ -1,41 +1,42 @@
 package me.amar.lifex.commands;
 
-import me.amar.lifex.commands.SubCommands.ListCommand;
-import me.amar.lifex.commands.SubCommands.RemoveHeartCommand;
+import me.amar.lifex.API.Public;
+import me.amar.lifex.Menus.LifeXMainMenu;
+import me.amar.lifex.commands.SubCommands.*;
 import me.amar.lifex.LifeX;
-import me.amar.lifex.commands.SubCommands.ResetHeartsCommand;
-import me.amar.lifex.commands.SubCommands.SetHeartCommands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
-public class XLifeCommandManager implements CommandExecutor {
+public class LifeXCommandManager implements CommandExecutor {
 
     private final LifeX plugin = LifeX.getPlugin(LifeX.class);
     private ArrayList<SubCommand> SubCommands = new ArrayList<SubCommand>();
 
 
-    public XLifeCommandManager() {
+    public LifeXCommandManager() {
         SubCommands.add(new ResetHeartsCommand());
         SubCommands.add(new SetHeartCommands());
         SubCommands.add(new ListCommand());
         SubCommands.add(new RemoveHeartCommand());
+        SubCommands.add(new WhitelistCommand());
     }
 
 
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-
+        String prefix = plugin.getConfig().getString("prefix") + " ";
         if (args.length > 0) {
             if (args[0].equalsIgnoreCase("reload")) {
-                if (sender.hasPermission("xlife.reload")) {
+                if (sender.hasPermission("lifex.reload")) {
                     plugin.reloadConfig();
-                    sender.sendMessage(LifeX.colorize("&cConfig has been reloaded successfully."));
+                    sender.sendMessage(LifeX.colorize(prefix + "&cConfig has been reloaded successfully."));
                 } else {
-                    sender.sendMessage(LifeX.colorize("&cYou do not have permission to use this command."));
+                    sender.sendMessage(LifeX.colorize(prefix + "&cYou do not have permission to use this command."));
                 }
             } else if(!args[0].equalsIgnoreCase("reload")){
 
@@ -46,10 +47,14 @@ public class XLifeCommandManager implements CommandExecutor {
                 }
 
             } else {
-                HelpMethod.getHelpMethod(sender);
+                Public.getHelpMethod(sender);
             }
         } else {
-            HelpMethod.getHelpMethod(sender);
+            if(sender.hasPermission("lifex.main")) {
+                new LifeXMainMenu((Player) sender);
+            } else {
+                sender.sendMessage(LifeX.colorize(prefix + "&cYou do not have permission to use this command"));
+            }
         }
             return true;
 
