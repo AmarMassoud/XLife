@@ -53,7 +53,7 @@ public class LifeXMainMenu extends CustomMenu {
                 }
             }, 20 * 30L);
         });
-        setItem(19, ItemBuilder.build(new ItemStack(XMaterial.RED_WOOL.parseItem()), "&bRemove player from the LifeX whitelist.", Arrays.asList("&eClick me to remove a player from the LifeX whitelist")), event -> {
+        setItem(25, ItemBuilder.build(new ItemStack(XMaterial.RED_WOOL.parseItem()), "&bRemove player from the LifeX whitelist.", Arrays.asList("&eClick me to remove a player from the LifeX whitelist")), event -> {
             p.closeInventory();
             RemoveWhitelistPlayerChatListener.addPlayerToWhitelistRemoveChatListener(p.getUniqueId().toString());
             sendTitleMethod.sendTitle(p, LifeX.colorize("&bSpecify a player name in chat"), LifeX.colorize("&cTo add them to the whitelist"), 1, 600, 1);

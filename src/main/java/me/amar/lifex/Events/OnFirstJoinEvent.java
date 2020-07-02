@@ -14,14 +14,16 @@ public class OnFirstJoinEvent implements Listener {
     public void onFirstJoin(PlayerLoginEvent e) {
         String prefix = plugin.getConfig().getString("prefix") + " ";
         Player p = e.getPlayer();
-        if(!p.hasPlayedBefore()) {
-            if(plugin.getConfig().getStringList("whitelisted-players").contains(p.getUniqueId().toString())) {
+        if (!p.hasPlayedBefore()) {
+            if (plugin.getConfig().getStringList("whitelisted-players").contains(p.getUniqueId().toString())) {
                 p.sendMessage(LifeX.colorize(prefix + "&cYou are immune to the LifeX system since you have been whitelisted."));
             } else {
-                int maxhealth = plugin.getConfig().getInt("StartAt") * 2;
-                p.setMaxHealth(plugin.getConfig().getInt("StartAt") * 2);
+
             }
 
+        } else {
+            int maxhealth = plugin.getConfig().getInt("StartAt") * 2;
+            p.setMaxHealth(maxhealth);
         }
 
 

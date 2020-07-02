@@ -59,8 +59,6 @@ public enum XMaterial {
 	ACTIVATOR_RAIL,
 	/**
 	 * https://minecraft.gamepedia.com/Air
-	 * {@link Material#isAir()}
-	 *
 	 * @see #VOID_AIR
 	 * @see #CAVE_AIR
 	 */
@@ -1217,7 +1215,6 @@ public enum XMaterial {
 	/**
 	 * This is just an extra method that method that can be used for many cases.
 	 * It can be used in {@link org.bukkit.event.player.PlayerInteractEvent}
-	 * or when accessing {@link org.bukkit.entity.Player#getMainHand()},
 	 * or other compatibility related methods.
 	 * <p>
 	 * An invocation of this method yields exactly the same result as the expression:

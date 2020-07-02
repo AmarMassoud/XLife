@@ -1,5 +1,6 @@
 package me.amar.lifex.Events;
 
+import me.amar.lifex.API.sendTitleMethod;
 import me.amar.lifex.LifeX;
 import me.amar.lifex.Listeners.*;
 import org.bukkit.Bukkit;
@@ -16,6 +17,7 @@ public class OnDamageEvent implements Listener {
         String prefix = plugin.getConfig().getString("prefix") + " ";
         if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
+            sendTitleMethod.sendTitle(p, "", "", 1, 1, 1);
             AddWhitelistChatListener.removePlayerFromWhitelistAddPlayerChatListener(p.getUniqueId().toString());
             RemoveWhitelistPlayerChatListener.removePlayerFromWhitelistRemoveChatListener(p.getUniqueId().toString());
             PlayerAmountOfHeartsOnDeathChat.removePlayerFromAmountOfHeartsOnDeath(p.getUniqueId().toString());

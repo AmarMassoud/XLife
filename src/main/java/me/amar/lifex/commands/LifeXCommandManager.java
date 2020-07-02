@@ -51,7 +51,13 @@ public class LifeXCommandManager implements CommandExecutor {
             }
         } else {
             if(sender.hasPermission("lifex.main")) {
-                new LifeXMainMenu((Player) sender);
+                if(sender instanceof Player) {
+                    new LifeXMainMenu((Player) sender);
+
+                } else {
+                sender.sendMessage(LifeX.colorize("This command can only be used players"));
+                Public.getHelpMethod(sender);
+                }
             } else {
                 sender.sendMessage(LifeX.colorize(prefix + "&cYou do not have permission to use this command"));
             }
