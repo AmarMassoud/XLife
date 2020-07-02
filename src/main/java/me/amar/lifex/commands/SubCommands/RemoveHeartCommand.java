@@ -83,4 +83,12 @@ public class RemoveHeartCommand extends SubCommand {
         }
     }
 
+
+    public boolean contains(boolean o) {
+        if(o == true) {
+            return  true;
+        } else {
+            return false;
+        }
+    }
 }
