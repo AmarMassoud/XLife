@@ -29,6 +29,7 @@ public class LifeXCommandManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
+        boolean notUnknownCommand = true;
         String prefix = plugin.getConfig().getString("prefix") + " ";
         if (args.length > 0) {
             if (args[0].equalsIgnoreCase("reload")) {
@@ -38,16 +39,16 @@ public class LifeXCommandManager implements CommandExecutor {
                 } else {
                     sender.sendMessage(LifeX.colorize(prefix + "&cYou do not have permission to use this command."));
                 }
-            } else if(!args[0].equalsIgnoreCase("reload")){
-
-
+            } else if(!args[0].equalsIgnoreCase("reload")) {
                 for (int i = 0; i < getSubCommands().size(); i++) {
-                    if (args[0].equalsIgnoreCase((getSubCommands().get(i)).getName()))
+                    if (args[0].equalsIgnoreCase((getSubCommands().get(i)).getName())) {
                         getSubCommands().get(i).perform(sender, args);
+                        notUnknownCommand = false;
+                    } else if ((i == getSubCommands().size() - 1 && notUnknownCommand) == true) {
+                        Public.getHelpMethod(sender);
+                    }
                 }
 
-            } else {
-                Public.getHelpMethod(sender);
             }
         } else {
             if(sender.hasPermission("lifex.main")) {

@@ -26,7 +26,6 @@ public class DataYml {
         if (!dataFile.exists()) {
             try {
                 dataFile.createNewFile();
-                Bukkit.getConsoleSender().sendMessage(LifeX.colorize("&eLoaded data.yml &asuccessfully"));
             } catch (IOException e) {
                 Bukkit.getConsoleSender().sendMessage(LifeX.colorize("&cCould not load data.yml"));
                 e.printStackTrace();
@@ -54,7 +53,6 @@ public class DataYml {
 
     public static void reloadDataYml() {
         dataYml = YamlConfiguration.loadConfiguration(dataFile);
-        Bukkit.getConsoleSender().sendMessage(LifeX.colorize("&eReloaded data.yml &asuccessfully"));
     }
     public static Double getString(String node) {
         return DataYml.getString(node);

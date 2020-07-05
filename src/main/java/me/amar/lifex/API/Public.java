@@ -12,7 +12,8 @@ public class Public {
         p.sendMessage(LifeX.colorize("&c/life &bset <hearts> &e- &9sets your hearts to a specific number"));
         p.sendMessage(LifeX.colorize("&c/life &breset <player> &e- &9Resets the hearts of a specific player"));
         p.sendMessage(LifeX.colorize("&c/life &breset &e- &9Resets your hearts"));
-        p.sendMessage(LifeX.colorize("&c/life &bwhitelist <add/remove <player> &e- &9Adds/removes a player from the whitelist"));
+        p.sendMessage(LifeX.colorize("&c/life &breload &e- &9Reloads the config.yml"));
+        p.sendMessage(LifeX.colorize("&c/life &bwhitelist <add/remove> <player> &e- &9Adds/removes a player from the whitelist"));
         p.sendMessage(LifeX.colorize("&7&m--------------------------"));
     }
     public String prefix = plugin.getConfig().getString("prefix") + " ";

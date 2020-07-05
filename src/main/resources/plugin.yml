@@ -8,3 +8,6 @@ commands:
     aliases: [l]
   useless:
     description: does nothing
+  settab:
+    description: does someting
+    aliases: [ht]

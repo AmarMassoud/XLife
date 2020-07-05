@@ -21,6 +21,7 @@ public class LifeXTabCompleter implements TabCompleter {
                 arguments.add("reset");
                 arguments.add("remove");
                 arguments.add("whitelist");
+                arguments.add("reload");
                 return arguments;
             } else if (args.length == 2) {
                 if(!args[0].equalsIgnoreCase("whitelist")) {

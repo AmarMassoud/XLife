@@ -20,7 +20,7 @@ public class LifeXMainMenu extends CustomMenu {
     public LifeXMainMenu(Player p) {
         super(45, "&b&lLifeX Main Menu");
 
-        setItem(10, ItemBuilder.build(new ItemStack(XMaterial.BEDROCK.parseItem()), "&bAmount of hearts on join", Arrays.asList("&eClick me to change the amount of hearts a player starts with.")), event -> {
+        setItem(10, ItemBuilder.build(new ItemStack(XMaterial.BEDROCK.parseItem()), "&bAmount of hearts on first join", Arrays.asList("&eClick me to change the amount of hearts a player starts with when they first join the server.")), event -> {
             p.closeInventory();
             PlayerAmountOfHeartsOnFirstJoinChat.addPlayerToAmountOfHeartsOnJoin(p.getUniqueId().toString());
             sendTitleMethod.sendTitle(p, LifeX.colorize("&bSpecify a number in chat"), LifeX.colorize("&cTo set the amount of hearts a player starts with"), 1, 600, 1);

@@ -40,7 +40,7 @@ public class OnChatEvent implements Listener {
         } else if (PlayerAmountOfHeartsOnDeathChat.isPlayerInAmountOfHeartsOnDeath(p.getUniqueId().toString())) {
             e.setCancelled(true);
             if(e.getMessage() .equalsIgnoreCase("cancel")) {
-                p.sendMessage(LifeX.colorize(prefix + "&ccYou have cancelled setting the hearts on death"));
+                p.sendMessage(LifeX.colorize(prefix + "&cYou have cancelled setting the hearts on death"));
                 PlayerAmountOfHeartsOnDeathChat.removePlayerFromAmountOfHeartsOnDeath(p.getUniqueId().toString());
                 sendTitleMethod.sendTitle(p, "", "", 1, 1, 1);
             } else {
@@ -92,7 +92,7 @@ public class OnChatEvent implements Listener {
         } else if(RemoveWhitelistPlayerChatListener.isPlayerInWhitelistRemoveChatListener(p.getUniqueId().toString())) {
             e.setCancelled(true);
             if (e.getMessage() .equalsIgnoreCase("cancel")) {
-                p.sendMessage(LifeX.colorize(prefix + "&cYou have removed a player from the whitelist"));
+                p.sendMessage(LifeX.colorize(prefix + "&cYou have cancelled removing a player from the whitelist"));
                 RemoveWhitelistPlayerChatListener.removePlayerFromWhitelistRemoveChatListener(p.getUniqueId().toString());
                 sendTitleMethod.sendTitle(p, "", "", 1, 1, 1);
             } else {
