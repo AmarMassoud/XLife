@@ -6,7 +6,6 @@ import me.amar.lifex.Events.OnDamageEvent;
 import me.amar.lifex.Events.OnFirstJoinEvent;
 import me.amar.lifex.Events.OnPlayerRespawnEvent;
 import me.amar.lifex.commands.Files.DataYml;
-import me.amar.lifex.commands.HeartsTab;
 import me.amar.lifex.commands.LifeXCommandManager;
 import me.amar.lifex.commands.LifeXTabCompleter;
 import org.bukkit.Bukkit;
@@ -29,7 +28,6 @@ public final class LifeX extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new OnFirstJoinEvent(), this);
         Bukkit.getPluginManager().registerEvents(new OnPlayerRespawnEvent(), this);
         Bukkit.getPluginManager().registerEvents(new OnChatEvent(), this);
-        getCommand("settab").setExecutor(new HeartsTab());
         loadConfigManager();
         getLogger().info("LifeX " + getDescription().getVersion() + " has been enabled");
     }
