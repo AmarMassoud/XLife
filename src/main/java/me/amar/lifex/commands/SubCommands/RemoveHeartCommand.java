@@ -65,7 +65,7 @@ public class RemoveHeartCommand extends SubCommand {
                                 p.sendMessage(LifeX.colorize(prefix + "&bYou have exchanged " + plugin.getConfig().getInt("RemoveHeartCommand.amount") + " " + materialWithoutUnderscores + "(s) for " + plugin.getConfig().getInt("IncrementsBy") + " heart(s)!"));
                                 p.setMaxHealth((p.getMaxHealth() + plugin.getConfig().getInt("IncrementsBy")) * 2);
                                 p.setHealth(p.getMaxHealth());
-                            } else {
+                            } else if(i == p.getInventory().getSize() && availableAmount < requiredAmount){
                                 p.sendMessage(LifeX.colorize(prefix + "&bYou need " + plugin.getConfig().getInt("RemoveHeartCommand.amount") + " " + materialWithoutUnderscores + "(s) to perform this command."));
                                 i += p.getInventory().getSize() + 1;
                                 System.out.println("not work it");

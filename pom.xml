@@ -62,9 +62,18 @@
             <id>spigot</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.Demeng7215</groupId>
+            <artifactId>DemLib</artifactId>
+            <version>4.2.0</version>
+        </dependency>
         <dependency>
         <groupId>org.spigotmc</groupId>
         <artifactId>spigot</artifactId>

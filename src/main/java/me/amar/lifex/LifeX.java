@@ -1,6 +1,6 @@
 package me.amar.lifex;
 
-import com.demeng7215.demlib.DemLib;
+import dev.demeng.demlib.DemLib;
 import me.amar.lifex.Events.OnChatEvent;
 import me.amar.lifex.Events.OnDamageEvent;
 import me.amar.lifex.Events.OnFirstJoinEvent;
