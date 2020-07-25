@@ -3,12 +3,15 @@ package me.amar.lifex.commands.SubCommands;
 import me.amar.lifex.API.XMaterial;
 import me.amar.lifex.LifeX;
 import me.amar.lifex.commands.SubCommand;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class RemoveHeartCommand extends SubCommand {
@@ -31,7 +34,7 @@ public class RemoveHeartCommand extends SubCommand {
 
     @Override
     public void perform(CommandSender sender, String[] args) {
-        int requiredAmount = plugin.getConfig().getInt("RemoveHeartCommand.amount");
+    /*    int requiredAmount = plugin.getConfig().getInt("RemoveHeartCommand.amount");
         ItemStack itemstack = getMaterial(plugin.getConfig().getString("RemoveHeartCommand.material"));
         int availableAmount = 0;
         ArrayList<Integer> slots = new ArrayList<>();
@@ -81,7 +84,56 @@ public class RemoveHeartCommand extends SubCommand {
             p.sendMessage(LifeX.colorize(prefix + "&cYou don't have permission to run this command."));
         }
 
-        //end
+        //end*/
+
+        ArrayList<Integer> slots = new ArrayList<>();
+        int availableAmount = 0;
+        int neededAmount = plugin.getConfig().getInt("RemoveHeartCommand.amount");
+        ItemStack item = new ItemStack(getMaterial(plugin.getConfig().getString("RemoveHeartCommand.material")));
+        Player player = ((Player) sender);
+        if (player.hasPermission("life.remove")) {
+            if (player.getMaxHealth() <= 2) {
+                player.sendMessage(LifeX.colorize("You have 1 heart only, save your items for later!"));
+            } else {
+                for (int i = 0; i <= player.getInventory().getSize(); ++i) {
+                    if (player.getInventory().getItem(i) != null) {
+                        if (player.getInventory().getItem(i).isSimilar(item)) {
+                            availableAmount += player.getInventory().getItem(i).getAmount();
+                            slots.add(i);
+                            player.sendMessage("+" + player.getInventory().getItem(i).getAmount());
+
+                        }
+                    }
+                }
+                if (availableAmount >= neededAmount) {
+                    ItemStack air = new ItemStack(Material.AIR);
+                    for (int slot : slots) {
+                        if (neededAmount != 0) {
+                            if (player.getInventory().getItem(slot).getAmount() == neededAmount) {
+                                player.getInventory().setItem(slot, air);
+                                neededAmount = 0;
+                                availableAmount -= neededAmount;
+                            } else if (player.getInventory().getItem(slot).getAmount() < neededAmount) {
+                                neededAmount -= player.getInventory().getItem(slot).getAmount();
+                                availableAmount -= player.getInventory().getItem(slot).getAmount();
+                                player.getInventory().setItem(slot, air);
+                            } else if (player.getInventory().getItem(slot).getAmount() > neededAmount) {
+                                ItemStack diamondsRemaining = new ItemStack(item);
+                                diamondsRemaining.setAmount(player.getInventory().getItem(slot).getAmount() - neededAmount);
+                                neededAmount = 0;
+                                player.getInventory().setItem(slot, diamondsRemaining);
+                            }
+                        }
+                    }
+                    player.setMaxHealth(player.getMaxHealth() - 2);
+                    player.sendMessage(LifeX.colorize("Keep up the hard work!"));
+                } else {
+                    player.sendMessage("You don't have enough " + item.getType() + "(s) to perform this command.");
+                }
+
+            }
+        }
+
     }
 
     public ItemStack getMaterial(String name) {

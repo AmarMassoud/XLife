@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="LifeX1.8For2:jar2">
-    <output-path>$USER_HOME$/Desktop/Minecraft server for 1.8 a copy/plugins</output-path>
+  <artifact type="jar" build-on-make="true" name="LifeX1.8For2:jar2">
+    <output-path>$PROJECT_DIR$/../../../../../Server/plugins</output-path>
     <root id="archive" name="LifeX.jar">
       <element id="module-output" name="LifeX" />
     </root>
